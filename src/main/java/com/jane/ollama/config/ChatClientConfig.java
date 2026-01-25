@@ -3,6 +3,7 @@ package com.jane.ollama.config;
 import com.jane.ollama.advisors.TokenUsageAuditAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,10 @@ public class ChatClientConfig {
     public ChatClient chatClient(ChatClient.Builder chalClientBuilder){
         return chalClientBuilder
                 .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new TokenUsageAuditAdvisor()))
+                .defaultOptions(ChatOptions.builder()
+                        .temperature(0.8)
+                        .maxTokens(200)
+                        .build())
                 .defaultSystem("""
                         You are an internal IT helpdesk assistant. Your role is to assist 
                         employees with IT-related issues such as resetting passwords, 
