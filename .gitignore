@@ -1,0 +1,76 @@
+# ===============================
+# IntelliJ IDEA
+# ===============================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ===============================
+# Java / JVM
+# ===============================
+*.class
+*.log
+hs_err_pid*
+
+# ===============================
+# Maven
+# ===============================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ===============================
+# Gradle (if used)
+# ===============================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ===============================
+# Spring Boot
+# ===============================
+*.pid
+*.pid.lock
+
+# ===============================
+# Application config (secrets)
+# ===============================
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+application-prod.yml
+application-prod.properties
+
+# ===============================
+# Logs
+# ===============================
+logs/
+*.log
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# VS Code (if ever opened)
+# ===============================
+.vscode/
+
+# ===============================
+# Node (if frontend included)
+# ===============================
+node_modules/
+dist/
+
+# ============================
