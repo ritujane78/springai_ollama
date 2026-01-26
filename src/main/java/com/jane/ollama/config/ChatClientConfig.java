@@ -18,7 +18,7 @@ public class ChatClientConfig {
                 .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new TokenUsageAuditAdvisor()))
                 .defaultOptions(ChatOptions.builder()
                         .temperature(0.8)
-                        .maxTokens(200)
+                        .maxTokens(250)
                         .build())
                 .defaultSystem("""
                         You are an internal IT helpdesk assistant. Your role is to assist 
