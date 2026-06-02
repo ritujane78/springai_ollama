@@ -8,6 +8,7 @@ import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -20,10 +21,10 @@ import java.util.List;
 public class TimeClientConfig {
 
     @Bean("timeChatClient")
-    public ChatClient chatClient(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory, TimeTools timeTools) {
+    public ChatClient chatClient(OllamaChatModel ollamaChatModel, ChatMemory chatMemory, TimeTools timeTools) {
         Advisor loggerAdvisor = new SimpleLoggerAdvisor();
         Advisor memoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
-        return chatClientBuilder
+        return ChatClient.builder(ollamaChatModel)
                 .defaultTools(timeTools)
                 .defaultAdvisors(List.of(loggerAdvisor, memoryAdvisor))
                 .build();

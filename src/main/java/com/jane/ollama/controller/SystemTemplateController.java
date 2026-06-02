@@ -1,6 +1,7 @@
 package com.jane.ollama.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class SystemTemplateController {
 
     private final ChatClient chatClient;
 
-    public SystemTemplateController(ChatClient chatClient) {
+    public SystemTemplateController(@Qualifier("ollamaChatClient") ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 

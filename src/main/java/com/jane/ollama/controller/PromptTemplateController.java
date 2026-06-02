@@ -1,6 +1,7 @@
 package com.jane.ollama.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +15,8 @@ public class PromptTemplateController {
 
     private final ChatClient chatClient;
 
-    public PromptTemplateController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public PromptTemplateController(OllamaChatModel ollamaChatModel) {
+        this.chatClient = ChatClient.builder(ollamaChatModel).build();
     }
 
     @Value("classpath:/promptTemplates/userPromptTemplate.st")

@@ -1,6 +1,7 @@
 package com.jane.ollama.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +13,8 @@ import reactor.core.publisher.Flux;
 public class StreamController {
     private final ChatClient chatClient;
 
-    public StreamController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public StreamController(OpenAiChatModel openAiChatModel) {
+        this.chatClient = ChatClient.builder(openAiChatModel).build();
     }
 
     @GetMapping("/stream")

@@ -5,6 +5,8 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -22,8 +24,8 @@ import java.util.Objects;
 @RequestMapping("/api")
 public class StructuredOutputController {
     private final ChatClient chatClient;
-    public StructuredOutputController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder
+    public StructuredOutputController(OllamaChatModel chatClientModel) {
+        this.chatClient = ChatClient.builder(chatClientModel)
                 .defaultAdvisors(new SimpleLoggerAdvisor())
 //                .defaultSystem("You MUST return a JSON object with fields:\n" +
 //                        "- country: string\n" +

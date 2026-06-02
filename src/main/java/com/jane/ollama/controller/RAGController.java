@@ -25,7 +25,7 @@ public class RAGController {
 
     public RAGController(@Qualifier("chatMemoryChatClient") ChatClient chatClient,
                          @Qualifier("webSearchRAGChatClient") ChatClient webSearchchatClient,
-                         VectorStore vectorStore) {
+                         @Qualifier("customVectorStore")VectorStore vectorStore) {
         this.chatClient = chatClient;
         this.webSearchchatClient = webSearchchatClient;
         this.vectorStore = vectorStore;
